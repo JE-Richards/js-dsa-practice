@@ -129,4 +129,42 @@ class BinarySearchTree {
     }
     return currentNode;
   }
+
+  // Public traversal functions that always start from the root node
+  preOrder(callback) {
+    return this.#preOrderTraversal(this.root, callback);
+  }
+
+  inOrder(callback) {
+    return this.#inOrderTraversal(this.root, callback);
+  }
+
+  postOrder(callback) {
+    return this.#postOrderTraversal(this.root, callback);
+  }
+
+  // Private traversal functions that can start from any node
+  #preOrderTraversal(node, callback) {
+    if (node !== null) {
+      callback(node.data);
+      this.#preOrderTraversal(node.left, callback);
+      this.#preOrderTraversal(node.right, callback);
+    }
+  }
+
+  #inOrderTraversal(node, callback) {
+    if (node !== null) {
+      this.#inOrderTraversal(node.left, callback);
+      callback(node.data);
+      this.#inOrderTraversal(node.right, callback);
+    }
+  }
+
+  #postOrderTraversal(node, callback) {
+    if (node !== null) {
+      this.#postOrderTraversal(node.left, callback);
+      this.#postOrderTraversal(node.right, callback);
+      callback(node.data);
+    }
+  }
 }
