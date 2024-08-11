@@ -1,3 +1,5 @@
+import { Queue } from './queue';
+
 // node class for use in the binary search tree
 class Node {
   constructor(data) {
@@ -141,6 +143,25 @@ class BinarySearchTree {
 
   postOrder(callback) {
     return this.#postOrderTraversal(this.root, callback);
+  }
+
+  levelOrder(callback) {
+    const queue = new Queue();
+
+    queue.enqueue(this.root);
+
+    while (queue.size > 0) {
+      let currentNode = queue.dequeue;
+      callback(currentNode.data);
+
+      if (currentNode.left !== null) {
+        queue.enqueue(currentNode.left);
+      }
+
+      if (currentNode.right !== null) {
+        queue.enqueue(currentNode.right);
+      }
+    }
   }
 
   // Private traversal functions that can start from any node

@@ -6,7 +6,7 @@ class Queue {
   //   this.items = [];
   // }
 
-  isEmpty() {
+  get isEmpty() {
     return this.#items.length === 0;
   }
 
@@ -14,35 +14,37 @@ class Queue {
     this.#items.push(element);
   }
 
-  dequeue() {
-    if (this.isEmpty()) {
+  get dequeue() {
+    if (this.isEmpty) {
       return 'Queue is empty';
     } else {
       return this.#items.shift();
     }
   }
 
-  size() {
-    if (this.isEmpty()) {
+  get size() {
+    if (this.isEmpty) {
       return 'Queue is empty';
     } else {
       return this.#items.length;
     }
   }
 
-  peek() {
-    if (this.isEmpty()) {
+  get peek() {
+    if (this.isEmpty) {
       return 'Queue is empty';
     } else {
       return this.#items[0];
     }
   }
 
-  print() {
-    if (this.isEmpty()) {
+  get print() {
+    if (this.isEmpty) {
       return 'Queue is empty';
     } else {
       return this.#items.join(', ');
     }
   }
 }
+
+export { Queue };
